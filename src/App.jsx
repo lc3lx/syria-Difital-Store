@@ -21,27 +21,39 @@ const templates = {
     services: [
       // Column 1: USA
       {
-        country: "USA",
-        lines: [{ categories: "5", price: "7200", fontSize: 54, color: "#000" }],
+        country: "USA 5",
+        lines: [{ price: "7200", fontSize: 54, color: "#000" }],
         x: 160,
         y: 450,
       },
       {
-        country: "USA",
-        lines: [{ categories: "10-20-25", price: "8100", fontSize: 54, color: "#000" }],
-        x: 390,
+        country: "USA 10-15-25",
+        lines: [
+          {
+            price: "8100",
+            fontSize: 54,
+            color: "#000",
+          },
+        ],
+        x: 400,
         y: 450,
       },
       {
-        country: "USA",
-        lines: [{ categories: "15-50", price: "8200", fontSize: 54, color: "#000" }],
+        country: "USA 20-..-100",
+        lines: [{ price: "8200", fontSize: 54, color: "#000" }],
         x: 670,
         y: 450,
         blockId: "usa-710-1",
       },
       {
-        country: "USA",
-        lines: [{ categories: "30-40-100", price: "8400", fontSize: 54, color: "#000" }],
+        country: "USA مكسر ",
+        lines: [
+          {
+            price: "8400",
+            fontSize: 54,
+            color: "#000",
+          },
+        ],
         x: 920,
         y: 450,
         blockId: "usa-710-2",
@@ -49,73 +61,101 @@ const templates = {
 
       // Column 2: Germany & UK
       {
-        country: "Germany",
-        lines: [{ categories: "5", price: "8400", fontSize: 54, color: "#000" }],
+        country: "Germany 5",
+        lines: [{ price: "8400", fontSize: 54, color: "#000" }],
         x: 160,
-        y: 700,
+        y: 710,
       },
       {
-        country: "Germany",
-        lines: [{ categories: "20-30-40-50", price: "8800", fontSize: 54, color: "#000" }],
-        x: 390,
+        country: "Germany 10-15-25",
+        lines: [
+          {
+            price: "8800",
+            fontSize: 54,
+            color: "#000",
+          },
+        ],
+        x: 400,
         y: 700,
         blockId: "ger-490-1",
       },
       {
-        country: "Germany",
-        lines: [{ categories: "10-15", price: "8800", fontSize: 54, color: "#000" }],
+        country: "Germany 30-40-50",
+        lines: [{ price: "8800", fontSize: 54, color: "#000" }],
         x: 670,
         y: 700,
         blockId: "ger-490-2",
       },
       {
-        country: "UK",
-        lines: [{ categories: "5", price: "9200", fontSize: 54, color: "#000" }],
+        country: "UK 5 15 20",
+        lines: [{ price: "9200", fontSize: 54, color: "#000" }],
         x: 160,
         y: 1200,
         blockId: "uk-650-1",
       },
       {
-        country: "UK",
-        lines: [{ categories: "25-40", price: "8800", fontSize: 54, color: "#000" }],
-        x: 390,
+        country: "UK 25 - 30 -40",
+        lines: [{ price: "8800", fontSize: 54, color: "#000" }],
+        x: 400,
         y: 1200,
         blockId: "uk-650-2",
       },
       {
-        country: "UK",
-        lines: [{ categories: "10-15-20", price: "8800", fontSize: 54, color: "#000" }],
+        country: "UK 50 - 100",
+        lines: [
+          {
+            price: "8800",
+            fontSize: 54,
+            color: "#000",
+          },
+        ],
         x: 670,
         y: 1200,
       }, // Adjusted y
       {
         country: "UK",
-        lines: [{ categories: "50-100", price: "8800", fontSize: 54, color: "#000" }],
+        lines: [{ price: "8800", fontSize: 54, color: "#000" }],
         x: 920,
         y: 1200,
       },
 
       // Column 3: France & Italy
-      { country: "Italy", lines: [{ price: "8900", fontSize: 54, color: "#000" }], x: 670, y: 960 },
       {
-        country: "France",
-        lines: [{ categories: "5", price: "8700", fontSize: 54, color: "#000" }],
-        x: 920,
-        y: 700,
-      },
-      {
-        country: "France",
-        lines: [{ categories: "15 to 50", price: "8900", fontSize: 54, color: "#000" }],
-        x: 390,
+        country: "Italy 5 - 40",
+        lines: [{ price: "8900", fontSize: 54, color: "#000" }],
+        x: 670,
         y: 960,
       },
       {
-        country: "France",
-        lines: [{ categories: "20", price: "9000", fontSize: 54, color: "#000" }],
+        country: "France 5",
+        lines: [{ price: "8700", fontSize: 54, color: "#000" }],
+        x: 920,
+        y: 720,
+      },
+      {
+        country: "France 10-15-25-30-40-50",
+        lines: [
+          {
+            price: "8900",
+            fontSize: 54,
+            color: "#000",
+          },
+        ],
+        x: 410,
+        y: 960,
+      },
+      {
+        country: "France 20",
+        lines: [{ price: "9000", fontSize: 54, color: "#000" }],
         x: 160,
         y: 960,
       },
-      { country: "Italy", lines: [{ price: "8900", fontSize: 54, color: "#000" }], x: 920, y: 960 }, // Adjusted y
+      {
+        country: "Italy 10-15-25-30-50",
+        lines: [{ price: "8900", fontSize: 54, color: "#000" }],
+        x: 920,
+        y: 960,
+      }, // Adjusted y
     ],
   },
   template2: {
@@ -126,27 +166,104 @@ const templates = {
       // نفس أماكن قالب أمازون، مع أسماء الخدمات الرقمية
       { name: "USDT", x: 105, y: 430, usd: 0, fontSize: 54, color: "#000" },
       { name: "Payeer", x: 310, y: 430, usd: 0, fontSize: 54, color: "#000" },
-      { name: "iTunes USA 1", x: 525, y: 430, usd: 0, fontSize: 54, color: "#000" },
-      { name: "iTunes USA 2", x: 730, y: 430, usd: 0, fontSize: 54, color: "#000" },
-      { name: "iTunes USA 3", x: 935, y: 430, usd: 0, fontSize: 54, color: "#000" },
+      {
+        name: "iTunes USA 1",
+        x: 525,
+        y: 440,
+        usd: 0,
+        fontSize: 54,
+        color: "#000",
+      },
+      {
+        name: "iTunes USA 2",
+        x: 730,
+        y: 440,
+        usd: 0,
+        fontSize: 54,
+        color: "#000",
+      },
+      {
+        name: "iTunes USA 3",
+        x: 935,
+        y: 470,
+        usd: 0,
+        fontSize: 54,
+        color: "#000",
+      },
 
-      { name: "Rezer Gold", x: 105, y: 680, usd: 0, fontSize: 54, color: "#000" },
-      { name: "walmart 1", x: 310, y: 680, usd: 0, fontSize: 54, color: "#000" },
-      { name: "walmart 2", x: 525, y: 680, usd: 0, fontSize: 54, color: "#000" },
-      { name: "walmart 3", x: 730, y: 680, usd: 0, fontSize: 54, color: "#000" },
-      { name: "Target 1", x: 935, y: 680, usd: 0, fontSize: 54, color: "#000" },
+      {
+        name: "Rezer Gold",
+        x: 105,
+        y: 680,
+        usd: 0,
+        fontSize: 54,
+        color: "#000",
+      },
+      {
+        name: "walmart 1",
+        x: 310,
+        y: 690,
+        usd: 0,
+        fontSize: 54,
+        color: "#000",
+      },
+      {
+        name: "walmart 2",
+        x: 525,
+        y: 690,
+        usd: 0,
+        fontSize: 54,
+        color: "#000",
+      },
+      {
+        name: "walmart 3",
+        x: 730,
+        y: 710,
+        usd: 0,
+        fontSize: 54,
+        color: "#000",
+      },
+      { name: "Target 1", x: 935, y: 700, usd: 0, fontSize: 54, color: "#000" },
 
-      { name: "Target 2", x: 105, y: 930, usd: 0, fontSize: 54, color: "#000" },
-      { name: "Steam", x: 310, y: 930, usd: 0, fontSize: 54, color: "#000" },
-      { name: "Paypal Send", x: 525, y: 930, usd: 0, fontSize: 54, color: "#000" },
-      { name: "Paypal Link", x: 730, y: 930, usd: 0, fontSize: 54, color: "#000" },
-      { name: "playstation", x: 935, y: 930, usd: 0, fontSize: 54, color: "#000" },
+      { name: "Target 2", x: 105, y: 950, usd: 0, fontSize: 54, color: "#000" },
+      { name: "Steam", x: 310, y: 940, usd: 0, fontSize: 54, color: "#000" },
+      {
+        name: "Paypal Send",
+        x: 525,
+        y: 940,
+        usd: 0,
+        fontSize: 54,
+        color: "#000",
+      },
+      {
+        name: "Paypal Link",
+        x: 730,
+        y: 940,
+        usd: 0,
+        fontSize: 54,
+        color: "#000",
+      },
+      {
+        name: "playstation",
+        x: 935,
+        y: 940,
+        usd: 0,
+        fontSize: 54,
+        color: "#000",
+      },
 
-      { name: "master", x: 105, y: 1170, usd: 0, fontSize: 54, color: "#000" },
-      { name: "Visa", x: 310, y: 1170, usd: 0, fontSize: 54, color: "#000" },
-      { name: "Uber 1", x: 525, y: 1170, usd: 0, fontSize: 54, color: "#000" },
-      { name: "Uber 2", x: 730, y: 1170, usd: 0, fontSize: 54, color: "#000" }, // مكان إضافي إذا أردت تكرار أو إضافة خدمة أخرى
-      { name: "starbucks", x: 935, y: 1170, usd: 0, fontSize: 54, color: "#000" }, // مكان إضافي
+      { name: "master", x: 105, y: 1180, usd: 0, fontSize: 54, color: "#000" },
+      { name: "Visa", x: 310, y: 1180, usd: 0, fontSize: 54, color: "#000" },
+      { name: "Uber 1", x: 525, y: 1200, usd: 0, fontSize: 54, color: "#000" },
+      { name: "Uber 2", x: 730, y: 1200, usd: 0, fontSize: 54, color: "#000" }, // مكان إضافي إذا أردت تكرار أو إضافة خدمة أخرى
+      {
+        name: "starbucks",
+        x: 935,
+        y: 1180,
+        usd: 0,
+        fontSize: 54,
+        color: "#000",
+      }, // مكان إضافي
     ],
   },
 };
@@ -167,28 +284,40 @@ function App() {
   // تاريخ القالب
   const [templateDate, setTemplateDate] = useState(() => {
     const stored = localStorage.getItem("templateDate");
-    return stored ? JSON.parse(stored) : {
-      text: "",
-      x: 0,
-      y: 0,
-      color: "#d90429",
-      fontSize: 50,
-    };
+    return stored
+      ? JSON.parse(stored)
+      : {
+          text: "",
+          x: 0,
+          y: 0,
+          color: "#d90429",
+          fontSize: 50,
+        };
   });
   const canvasRef = useRef(null);
 
   useEffect(() => {
     if (selectedTemplate) {
       // إذا هناك بيانات مخزنة للقالب الحالي استخدمها، وإلا استخدم القيم الافتراضية
-      const storedServices = localStorage.getItem(`services_${selectedTemplate}`);
-      setServices(
-        storedServices ? JSON.parse(storedServices) : JSON.parse(JSON.stringify(templates[selectedTemplate].services))
+      const storedServices = localStorage.getItem(
+        `services_${selectedTemplate}`
       );
-      const storedDate = localStorage.getItem(`templateDate_${selectedTemplate}`);
+      setServices(
+        storedServices
+          ? JSON.parse(storedServices)
+          : JSON.parse(JSON.stringify(templates[selectedTemplate].services))
+      );
+      const storedDate = localStorage.getItem(
+        `templateDate_${selectedTemplate}`
+      );
       if (storedDate) {
         setTemplateDate(JSON.parse(storedDate));
       } else {
-        const date = templates[selectedTemplate].date || { text: "", x: 0, y: 0 };
+        const date = templates[selectedTemplate].date || {
+          text: "",
+          x: 0,
+          y: 0,
+        };
         setTemplateDate({
           text: date.text || "",
           x: typeof date.x === "number" ? date.x : 0,
@@ -204,7 +333,10 @@ function App() {
   // حفظ القيم في التخزين المحلي عند أي تغيير
   useEffect(() => {
     if (selectedTemplate) {
-      localStorage.setItem(`services_${selectedTemplate}`, JSON.stringify(services));
+      localStorage.setItem(
+        `services_${selectedTemplate}`,
+        JSON.stringify(services)
+      );
     }
     localStorage.setItem("services", JSON.stringify(services));
   }, [services, selectedTemplate]);
@@ -215,7 +347,10 @@ function App() {
 
   useEffect(() => {
     if (selectedTemplate) {
-      localStorage.setItem(`templateDate_${selectedTemplate}`, JSON.stringify(templateDate));
+      localStorage.setItem(
+        `templateDate_${selectedTemplate}`,
+        JSON.stringify(templateDate)
+      );
     }
     localStorage.setItem("templateDate", JSON.stringify(templateDate));
   }, [templateDate, selectedTemplate]);
@@ -369,7 +504,6 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-50 p-4">
-
       <div className="max-w-7xl mx-auto">
         <h1 className="text-3xl font-bold text-center mb-8 text-gray-800">
           تطبيق إضافة الأسعار على الصور
@@ -449,51 +583,86 @@ function App() {
                   </h3>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-3 w-full">
                     <div className="flex flex-col items-start">
-                      <label className="text-sm font-medium mb-1">نص التاريخ:</label>
+                      <label className="text-sm font-medium mb-1">
+                        نص التاريخ:
+                      </label>
                       <Input
                         value={templateDate.text}
-                        onChange={(e) => setTemplateDate((d) => ({ ...d, text: e.target.value }))}
+                        onChange={(e) =>
+                          setTemplateDate((d) => ({
+                            ...d,
+                            text: e.target.value,
+                          }))
+                        }
                         className="w-full text-sm"
                         placeholder="مثال: 21-7-2025"
                       />
                     </div>
                     <div className="flex flex-col items-start">
-                      <label className="text-sm font-medium mb-1">لون الخط:</label>
+                      <label className="text-sm font-medium mb-1">
+                        لون الخط:
+                      </label>
                       <input
                         type="color"
                         value={templateDate.color}
-                        onChange={e => setTemplateDate(d => ({ ...d, color: e.target.value }))}
+                        onChange={(e) =>
+                          setTemplateDate((d) => ({
+                            ...d,
+                            color: e.target.value,
+                          }))
+                        }
                         className="w-10 h-10 p-0 border-none bg-transparent"
                         style={{ minWidth: 36 }}
                       />
                     </div>
                     <div className="flex flex-col items-start">
-                      <label className="text-sm font-medium mb-1">حجم الخط:</label>
+                      <label className="text-sm font-medium mb-1">
+                        حجم الخط:
+                      </label>
                       <Input
                         type="number"
                         min={10}
                         max={200}
                         value={templateDate.fontSize}
-                        onChange={e => setTemplateDate(d => ({ ...d, fontSize: Number(e.target.value) }))}
+                        onChange={(e) =>
+                          setTemplateDate((d) => ({
+                            ...d,
+                            fontSize: Number(e.target.value),
+                          }))
+                        }
                         className="w-full text-sm"
                         placeholder="مثال: 50"
                       />
                     </div>
                     <div className="flex flex-col items-start">
-                      <label className="text-sm font-medium mb-1">الموقع X:</label>
+                      <label className="text-sm font-medium mb-1">
+                        الموقع X:
+                      </label>
                       <Input
                         type="number"
                         value={templateDate.x}
-                        onChange={(e) => setTemplateDate((d) => ({ ...d, x: Number(e.target.value) }))}
+                        onChange={(e) =>
+                          setTemplateDate((d) => ({
+                            ...d,
+                            x: Number(e.target.value),
+                          }))
+                        }
                         className="w-full text-sm"
                       />
                     </div>
                     <div className="flex flex-col items-start">
-                      <label className="text-sm font-medium mb-1">الموقع Y:</label>
+                      <label className="text-sm font-medium mb-1">
+                        الموقع Y:
+                      </label>
                       <Input
                         type="number"
                         value={templateDate.y}
-                        onChange={(e) => setTemplateDate((d) => ({ ...d, y: Number(e.target.value) }))}
+                        onChange={(e) =>
+                          setTemplateDate((d) => ({
+                            ...d,
+                            y: Number(e.target.value),
+                          }))
+                        }
                         className="w-full text-sm"
                       />
                     </div>
@@ -549,21 +718,25 @@ function App() {
                               min={10}
                               max={200}
                               value={line.fontSize}
-                              onChange={e => {
+                              onChange={(e) => {
                                 const newServices = [...services];
-                                newServices[serviceIndex].lines[lineIndex].fontSize = Number(e.target.value);
+                                newServices[serviceIndex].lines[
+                                  lineIndex
+                                ].fontSize = Number(e.target.value);
                                 setServices(newServices);
                               }}
                               className="w-16 text-xs"
                               placeholder="حجم الخط"
-                              style={{direction:"ltr"}}
+                              style={{ direction: "ltr" }}
                             />
                             <input
                               type="color"
                               value={line.color}
-                              onChange={e => {
+                              onChange={(e) => {
                                 const newServices = [...services];
-                                newServices[serviceIndex].lines[lineIndex].color = e.target.value;
+                                newServices[serviceIndex].lines[
+                                  lineIndex
+                                ].color = e.target.value;
                                 setServices(newServices);
                               }}
                               title="لون السعر"
@@ -596,19 +769,21 @@ function App() {
                             min={10}
                             max={200}
                             value={service.fontSize}
-                            onChange={e => {
+                            onChange={(e) => {
                               const newServices = [...services];
-                              newServices[index].fontSize = Number(e.target.value);
+                              newServices[index].fontSize = Number(
+                                e.target.value
+                              );
                               setServices(newServices);
                             }}
                             className="w-16 text-xs"
                             placeholder="حجم الخط"
-                            style={{direction:"ltr"}}
+                            style={{ direction: "ltr" }}
                           />
                           <input
                             type="color"
                             value={service.color}
-                            onChange={e => {
+                            onChange={(e) => {
                               const newServices = [...services];
                               newServices[index].color = e.target.value;
                               setServices(newServices);
