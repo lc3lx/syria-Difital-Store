@@ -133,7 +133,7 @@ const templates = {
         y: 720,
       },
       {
-        country: "France 10-15-25-30-40-50",
+        country: "France 20",
         lines: [
           {
             price: "8900",
@@ -145,7 +145,7 @@ const templates = {
         y: 960,
       },
       {
-        country: "France 20",
+        country: "France 10-15-25-30-40-50",
         lines: [{ price: "9000", fontSize: 54, color: "#000" }],
         x: 160,
         y: 960,
