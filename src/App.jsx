@@ -399,7 +399,10 @@ function App() {
           ctx.fillText(templateDate.text, templateDate.x, templateDate.y);
         }
 
-        services.forEach((service) => {
+        // Ensure we only process services that have a valid lines array
+        services
+          .filter((s) => Array.isArray(s?.lines))
+          .forEach((service) => {
           // Special case: two categories/prices side by side
           if (service.lines.length === 2) {
             const offset = 60; // horizontal distance from center (final polish)
@@ -684,7 +687,9 @@ function App() {
               </div>
               <div className="space-y-4 max-h-96 overflow-y-auto p-2">
                 {selectedTemplate === "template1"
-                  ? services.map((service, serviceIndex) => (
+                  ? services
+                      .filter((s) => Array.isArray(s?.lines))
+                      .map((service, serviceIndex) => (
                       <Card key={serviceIndex} className="p-3">
                         <div className="font-bold text-md mb-2 text-center">
                           {service.country}
