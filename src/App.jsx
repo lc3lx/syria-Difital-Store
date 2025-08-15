@@ -20,142 +20,26 @@ const templates = {
     date: { text: "21-7-2025", x: 850, y: 220 },
     services: [
       // Column 1: USA
-      {
-        country: "USA 5",
-        lines: [{ price: "7200", fontSize: 54, color: "#000" }],
-        x: 160,
-        y: 450,
-      },
-      {
-        country: "USA 10-15-25",
-        lines: [
-          {
-            price: "8100",
-            fontSize: 54,
-            color: "#000",
-          },
-        ],
-        x: 400,
-        y: 450,
-      },
-      {
-        country: "USA 20-..-100",
-        lines: [{ price: "8200", fontSize: 54, color: "#000" }],
-        x: 670,
-        y: 450,
-        blockId: "usa-710-1",
-      },
-      {
-        country: "USA مكسر ",
-        lines: [
-          {
-            price: "8400",
-            fontSize: 54,
-            color: "#000",
-          },
-        ],
-        x: 920,
-        y: 450,
-        blockId: "usa-710-2",
-      },
+      { name: "USA 5", x: 140, y: 450, usd: 0, fontSize: 54, color: "#000" },
+      { name: "USA 10-15-25", x: 380, y: 450, usd: 0, fontSize: 54, color: "#000" },
+      { name: "USA 20-..-100", x: 650, y: 450, usd: 0, fontSize: 54, color: "#000" },
+      { name: "USA مكسر", x: 900, y: 450, usd: 0, fontSize: 54, color: "#000" },
 
       // Column 2: Germany & UK
-      {
-        country: "Germany 5",
-        lines: [{ price: "8400", fontSize: 54, color: "#000" }],
-        x: 160,
-        y: 710,
-      },
-      {
-        country: "Germany 10-15-25",
-        lines: [
-          {
-            price: "8800",
-            fontSize: 54,
-            color: "#000",
-          },
-        ],
-        x: 400,
-        y: 700,
-        blockId: "ger-490-1",
-      },
-      {
-        country: "Germany 30-40-50",
-        lines: [{ price: "8800", fontSize: 54, color: "#000" }],
-        x: 670,
-        y: 700,
-        blockId: "ger-490-2",
-      },
-      {
-        country: "UK 5 15 20",
-        lines: [{ price: "9200", fontSize: 54, color: "#000" }],
-        x: 160,
-        y: 1200,
-        blockId: "uk-650-1",
-      },
-      {
-        country: "UK 25 - 30 -40",
-        lines: [{ price: "8800", fontSize: 54, color: "#000" }],
-        x: 400,
-        y: 1200,
-        blockId: "uk-650-2",
-      },
-      {
-        country: "UK 50 - 100",
-        lines: [
-          {
-            price: "8800",
-            fontSize: 54,
-            color: "#000",
-          },
-        ],
-        x: 670,
-        y: 1200,
-      }, // Adjusted y
-      {
-        country: "UK",
-        lines: [{ price: "8800", fontSize: 54, color: "#000" }],
-        x: 920,
-        y: 1200,
-      },
+      { name: "Germany 5", x: 140, y: 710, usd: 0, fontSize: 54, color: "#000" },
+      { name: "Germany 10-15-25", x: 380, y: 700, usd: 0, fontSize: 54, color: "#000" },
+      { name: "Germany 30-40-50", x: 650, y: 700, usd: 0, fontSize: 54, color: "#000" },
+      { name: "UK 5 15 20", x: 140, y: 1200, usd: 0, fontSize: 54, color: "#000" },
+      { name: "UK 25 - 30 -40", x: 380, y: 1200, usd: 0, fontSize: 54, color: "#000" },
+      { name: "UK 50 - 100", x: 650, y: 1200, usd: 0, fontSize: 54, color: "#000" },
+      { name: "UK", x: 900, y: 1200, usd: 0, fontSize: 54, color: "#000" },
 
       // Column 3: France & Italy
-      {
-        country: "Italy 5 - 40",
-        lines: [{ price: "8900", fontSize: 54, color: "#000" }],
-        x: 670,
-        y: 960,
-      },
-      {
-        country: "France 5",
-        lines: [{ price: "8700", fontSize: 54, color: "#000" }],
-        x: 920,
-        y: 720,
-      },
-      {
-        country: "France 20",
-        lines: [
-          {
-            price: "8900",
-            fontSize: 54,
-            color: "#000",
-          },
-        ],
-        x: 410,
-        y: 960,
-      },
-      {
-        country: "France 10-15-25-30-40-50",
-        lines: [{ price: "9000", fontSize: 54, color: "#000" }],
-        x: 160,
-        y: 960,
-      },
-      {
-        country: "Italy 10-15-25-30-50",
-        lines: [{ price: "8900", fontSize: 54, color: "#000" }],
-        x: 920,
-        y: 960,
-      }, // Adjusted y
+      { name: "Italy 5 - 40", x: 650, y: 960, usd: 0, fontSize: 54, color: "#000" },
+      { name: "France 5", x: 900, y: 720, usd: 0, fontSize: 54, color: "#000" },
+      { name: "France 20", x: 390, y: 960, usd: 0, fontSize: 54, color: "#000" },
+      { name: "France 10-15-25-30-40-50", x: 140, y: 960, usd: 0, fontSize: 54, color: "#000" },
+      { name: "Italy 10-15-25-30-50", x: 900, y: 960, usd: 0, fontSize: 54, color: "#000" }
     ],
   },
   template2: {
@@ -399,72 +283,20 @@ function App() {
           ctx.fillText(templateDate.text, templateDate.x, templateDate.y);
         }
 
-        // Ensure we only process services that have a valid lines array
-        services
-          .filter((s) => Array.isArray(s?.lines))
-          .forEach((service) => {
-          // Special case: two categories/prices side by side
-          if (service.lines.length === 2) {
-            const offset = 60; // horizontal distance from center (final polish)
-            const yCat = service.y - 14;
-            const yPrice = yCat + 34;
-            // Helper to auto-fit and auto-grow category text
-            function fitCategoryText(text, maxWidth) {
-              let fontSize = 32;
-              ctx.font = `900 ${fontSize}px Arial`;
-              // Try to maximize font size for short categories
-              while (
-                ctx.measureText(text).width < maxWidth - 20 &&
-                fontSize < 36
-              ) {
-                fontSize += 1;
-                ctx.font = `900 ${fontSize}px Arial`;
-              }
-              // Reduce font size for long text
-              while (ctx.measureText(text).width > maxWidth && fontSize > 18) {
-                fontSize -= 1;
-                ctx.font = `900 ${fontSize}px Arial`;
-              }
-              return fontSize;
-            }
-            // Left item
+        // Draw prices for template1 (Amazon)
+        services.forEach((service) => {
+          if (service.usd && !isNaN(Number(service.usd))) {
+            const syp = Math.round(Number(service.usd) * exchangeRate);
+            ctx.font = `bold ${service.fontSize || 54}px Arial`;
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
-            let leftFont = fitCategoryText(service.lines[0].categories, 110);
-            ctx.font = `900 ${leftFont}px Arial`;
-            ctx.fillStyle = "#000";
-            ctx.fillText(service.lines[0].categories, service.x - offset, yCat);
-            ctx.font = `bold ${service.lines[0].fontSize || 54}px Arial`;
-            ctx.fillStyle = service.lines[0].color || "#000";
-            ctx.fillText(service.lines[0].price, service.x - offset, yPrice);
-            // Right item
-            let rightFont = fitCategoryText(service.lines[1].categories, 110);
-            ctx.font = `900 ${rightFont}px Arial`;
-            ctx.fillStyle = "#000";
-            ctx.fillText(service.lines[1].categories, service.x + offset, yCat);
-            ctx.font = `bold ${service.lines[1].fontSize || 54}px Arial`;
-            ctx.fillStyle = service.lines[1].color || "#000";
-            ctx.fillText(service.lines[1].price, service.x + offset, yPrice);
-          } else {
-            // Default: stacked vertically
-            const lineSpacing = 45;
-            const totalHeight = (service.lines.length - 1) * lineSpacing;
-            const startY = service.y - totalHeight / 2;
-            service.lines.forEach((line, lineIndex) => {
-              const yPos = startY + lineIndex * lineSpacing;
-              ctx.textAlign = "center";
-              ctx.textBaseline = "middle";
-              // Categories
-              if (line.categories) {
-                ctx.font = "bold 28px Arial";
-                ctx.fillStyle = "#000";
-                ctx.fillText(line.categories, service.x, yPos - 15);
-              }
-              // Price
-              ctx.font = `bold ${line.fontSize || 54}px Arial`;
-              ctx.fillStyle = line.color || "#000";
-              ctx.fillText(line.price, service.x, yPos + 20);
-            });
+            ctx.strokeStyle = "white";
+            ctx.lineWidth = 5;
+            const drawX = service.x + 30;
+            const drawY = service.y + 30;
+            ctx.strokeText(`${syp} `, drawX, drawY);
+            ctx.fillStyle = service.color || "#000";
+            ctx.fillText(`${syp} `, drawX, drawY);
           }
         });
       } else {
@@ -686,72 +518,7 @@ function App() {
                 />
               </div>
               <div className="space-y-4 max-h-96 overflow-y-auto p-2">
-                {selectedTemplate === "template1"
-                  ? services
-                      .filter((s) => Array.isArray(s?.lines))
-                      .map((service, serviceIndex) => (
-                      <Card key={serviceIndex} className="p-3">
-                        <div className="font-bold text-md mb-2 text-center">
-                          {service.country}
-                        </div>
-                        {service.lines.map((line, lineIndex) => (
-                          <div
-                            key={lineIndex}
-                            className="flex items-center gap-2 mb-2"
-                          >
-                            <span
-                              className="font-medium text-sm w-2/5 truncate"
-                              title={line.categories}
-                            >
-                              {line.categories}:
-                            </span>
-                            <Input
-                              placeholder="السعر"
-                              value={line.price}
-                              type="text"
-                              onChange={(e) =>
-                                updateServicePrice(
-                                  serviceIndex,
-                                  lineIndex,
-                                  e.target.value
-                                )
-                              }
-                              className="text-sm w-3/5"
-                            />
-                            <Input
-                              type="number"
-                              min={10}
-                              max={200}
-                              value={line.fontSize}
-                              onChange={(e) => {
-                                const newServices = [...services];
-                                newServices[serviceIndex].lines[
-                                  lineIndex
-                                ].fontSize = Number(e.target.value);
-                                setServices(newServices);
-                              }}
-                              className="w-16 text-xs"
-                              placeholder="حجم الخط"
-                              style={{ direction: "ltr" }}
-                            />
-                            <input
-                              type="color"
-                              value={line.color}
-                              onChange={(e) => {
-                                const newServices = [...services];
-                                newServices[serviceIndex].lines[
-                                  lineIndex
-                                ].color = e.target.value;
-                                setServices(newServices);
-                              }}
-                              title="لون السعر"
-                              className="w-8 h-8 p-0 border-0 bg-transparent"
-                            />
-                          </div>
-                        ))}
-                      </Card>
-                    ))
-                  : services.map((service, index) => (
+                {services.map((service, index) => (
                       <Card key={index} className="p-3">
                         <div className="flex justify-between items-center mb-2">
                           <span className="font-medium text-sm">
