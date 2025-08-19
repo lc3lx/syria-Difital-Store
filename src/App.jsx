@@ -20,26 +20,26 @@ const templates = {
     date: { text: "21-7-2025", x: 850, y: 220 },
     services: [
       // Column 1: USA
-      { name: "USA 5", x: 140, y: 450, usd: 0, fontSize: 54, color: "#000" },
-      { name: "USA 10-15-25", x: 380, y: 450, usd: 0, fontSize: 54, color: "#000" },
-      { name: "USA 20-..-100", x: 650, y: 450, usd: 0, fontSize: 54, color: "#000" },
-      { name: "USA مكسر", x: 900, y: 450, usd: 0, fontSize: 54, color: "#000" },
+      { name: "USA 5", x: 140, y: 450, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
+      { name: "USA 10-15-25", x: 380, y: 450, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
+      { name: "USA 20-..-100", x: 650, y: 450, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
+      { name: "USA مكسر", x: 900, y: 450, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
 
       // Column 2: Germany & UK
-      { name: "Germany 5", x: 140, y: 710, usd: 0, fontSize: 54, color: "#000" },
-      { name: "Germany 10-15-25", x: 380, y: 700, usd: 0, fontSize: 54, color: "#000" },
-      { name: "Germany 30-40-50", x: 650, y: 700, usd: 0, fontSize: 54, color: "#000" },
-      { name: "UK 5 15 20", x: 140, y: 1200, usd: 0, fontSize: 54, color: "#000" },
-      { name: "UK 25 - 30 -40", x: 380, y: 1200, usd: 0, fontSize: 54, color: "#000" },
-      { name: "UK 50 - 100", x: 650, y: 1200, usd: 0, fontSize: 54, color: "#000" },
-      { name: "UK", x: 900, y: 1200, usd: 0, fontSize: 54, color: "#000" },
+      { name: "Germany 5", x: 140, y: 710, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
+      { name: "Germany 10-15-25", x: 380, y: 700, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
+      { name: "Germany 30-40-50", x: 650, y: 700, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
+      { name: "UK 5 15 20", x: 140, y: 1200, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
+      { name: "UK 25 - 30 -40", x: 380, y: 1200, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
+      { name: "UK 50 - 100", x: 650, y: 1200, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
+      { name: "UK", x: 900, y: 1200, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
 
       // Column 3: France & Italy
-      { name: "Italy 5 - 40", x: 650, y: 960, usd: 0, fontSize: 54, color: "#000" },
-      { name: "France 5", x: 900, y: 720, usd: 0, fontSize: 54, color: "#000" },
-      { name: "France 20", x: 390, y: 960, usd: 0, fontSize: 54, color: "#000" },
-      { name: "France 10-15-25-30-40-50", x: 140, y: 960, usd: 0, fontSize: 54, color: "#000" },
-      { name: "Italy 10-15-25-30-50", x: 900, y: 960, usd: 0, fontSize: 54, color: "#000" }
+      { name: "Italy 5 - 40", x: 650, y: 960, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
+      { name: "France 5", x: 900, y: 720, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
+      { name: "France 20", x: 390, y: 960, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
+      { name: "France 10-15-25-30-40-50", x: 140, y: 960, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
+      { name: "Italy 10-15-25-30-50", x: 900, y: 960, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" }
     ],
   },
   template2: {
@@ -48,15 +48,15 @@ const templates = {
     date: { text: "21-7-2025", x: 850, y: 220 },
     services: [
       // نفس أماكن قالب أمازون، مع أسماء الخدمات الرقمية
-      { name: "USDT", x: 105, y: 430, usd: 0, fontSize: 54, color: "#000" },
-      { name: "Payeer", x: 310, y: 430, usd: 0, fontSize: 54, color: "#000" },
+      { name: "USDT", x: 105, y: 430, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
+      { name: "Payeer", x: 310, y: 430, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
       {
         name: "iTunes USA 1",
         x: 525,
         y: 440,
         usd: 0,
         fontSize: 54,
-        color: "#000",
+        colorLabel: "#000", colorValue: "#000",
       },
       {
         name: "iTunes USA 2",
@@ -64,7 +64,7 @@ const templates = {
         y: 440,
         usd: 0,
         fontSize: 54,
-        color: "#000",
+        colorLabel: "#000", colorValue: "#000",
       },
       {
         name: "iTunes USA 3",
@@ -72,7 +72,7 @@ const templates = {
         y: 470,
         usd: 0,
         fontSize: 54,
-        color: "#000",
+        colorLabel: "#000", colorValue: "#000",
       },
 
       {
@@ -81,7 +81,7 @@ const templates = {
         y: 680,
         usd: 0,
         fontSize: 54,
-        color: "#000",
+        colorLabel: "#000", colorValue: "#000",
       },
       {
         name: "walmart 1",
@@ -89,7 +89,7 @@ const templates = {
         y: 690,
         usd: 0,
         fontSize: 54,
-        color: "#000",
+        colorLabel: "#000", colorValue: "#000",
       },
       {
         name: "walmart 2",
@@ -97,7 +97,7 @@ const templates = {
         y: 690,
         usd: 0,
         fontSize: 54,
-        color: "#000",
+        colorLabel: "#000", colorValue: "#000",
       },
       {
         name: "walmart 3",
@@ -105,19 +105,19 @@ const templates = {
         y: 710,
         usd: 0,
         fontSize: 54,
-        color: "#000",
+        colorLabel: "#000", colorValue: "#000",
       },
-      { name: "Target 1", x: 935, y: 700, usd: 0, fontSize: 54, color: "#000" },
+      { name: "Target 1", x: 935, y: 700, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
 
-      { name: "Target 2", x: 105, y: 950, usd: 0, fontSize: 54, color: "#000" },
-      { name: "Steam", x: 310, y: 940, usd: 0, fontSize: 54, color: "#000" },
+      { name: "Target 2", x: 105, y: 950, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
+      { name: "Steam", x: 310, y: 940, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
       {
         name: "Paypal Send",
         x: 525,
         y: 940,
         usd: 0,
         fontSize: 54,
-        color: "#000",
+        colorLabel: "#000", colorValue: "#000",
       },
       {
         name: "Paypal Link",
@@ -125,7 +125,7 @@ const templates = {
         y: 940,
         usd: 0,
         fontSize: 54,
-        color: "#000",
+        colorLabel: "#000", colorValue: "#000",
       },
       {
         name: "playstation",
@@ -133,20 +133,20 @@ const templates = {
         y: 940,
         usd: 0,
         fontSize: 54,
-        color: "#000",
+        colorLabel: "#000", colorValue: "#000",
       },
 
-      { name: "master", x: 105, y: 1180, usd: 0, fontSize: 54, color: "#000" },
-      { name: "Visa", x: 310, y: 1180, usd: 0, fontSize: 54, color: "#000" },
-      { name: "Uber 1", x: 525, y: 1200, usd: 0, fontSize: 54, color: "#000" },
-      { name: "Uber 2", x: 730, y: 1200, usd: 0, fontSize: 54, color: "#000" }, // مكان إضافي إذا أردت تكرار أو إضافة خدمة أخرى
+      { name: "master", x: 105, y: 1180, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
+      { name: "Visa", x: 310, y: 1180, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
+      { name: "Uber 1", x: 525, y: 1200, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
+      { name: "Uber 2", x: 730, y: 1200, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" }, // مكان إضافي إذا أردت تكرار أو إضافة خدمة أخرى
       {
         name: "starbucks",
         x: 935,
         y: 1180,
         usd: 0,
         fontSize: 54,
-        color: "#000",
+        colorLabel: "#000", colorValue: "#000",
       }, // مكان إضافي
     ],
   },
@@ -311,7 +311,7 @@ function App() {
           ctx.strokeStyle = "white";
           ctx.lineWidth = 4;
           ctx.strokeText(name, drawX, drawY - priceFont);
-          ctx.fillStyle = "#000";
+          ctx.fillStyle = service.colorLabel || "#000";
           ctx.fillText(name, drawX, drawY - priceFont);
           // رسم السعر إذا كان موجوداً
           if (usd && !isNaN(Number(usd))) {
@@ -322,7 +322,7 @@ function App() {
             ctx.strokeStyle = "white";
             ctx.lineWidth = 5;
             ctx.strokeText(`${syp} `, drawX, drawY);
-            ctx.fillStyle = service.color || "#000";
+            ctx.fillStyle = service.colorValue || "#000";
             ctx.fillText(`${syp} `, drawX, drawY);
           }
         });
@@ -350,7 +350,7 @@ function App() {
             ctx.strokeStyle = "white";
             ctx.lineWidth = 4;
             ctx.strokeText(service.name, drawX, drawY - priceFont);
-            ctx.fillStyle = "#000";
+            ctx.fillStyle = service.colorLabel || "#000";
             ctx.fillText(service.name, drawX, drawY - priceFont);
 
             // Draw price
@@ -360,7 +360,7 @@ function App() {
             ctx.strokeStyle = "white";
             ctx.lineWidth = 5;
             ctx.strokeText(`${syp} `, drawX, drawY);
-            ctx.fillStyle = service.color || "#000";
+            ctx.fillStyle = service.colorValue || "#000";
             ctx.fillText(`${syp} `, drawX, drawY);
           }
         });
@@ -564,24 +564,18 @@ function App() {
                   <button
                     className="bg-blue-500 text-white px-3 py-1 rounded text-xs hover:bg-blue-600 transition"
                     onClick={() => {
-                      // إضافة فئة جديدة
                       const newNames = [...categoryNames, "فئة جديدة"];
                       const newPrices = [...categoryPrices, 0];
-                      // خصائص افتراضية للفئة الجديدة
                       const newService = {
                         name: "فئة جديدة",
                         x: 100,
                         y: 100,
                         usd: 0,
                         fontSize: 54,
-                        color: "#000"
+                        colorLabel: "#000",
+                        colorValue: "#000"
                       };
-                      const newTemplates = { ...templates };
-                      newTemplates[selectedTemplate].services = [
-                        ...newTemplates[selectedTemplate].services,
-                        newService
-                      ];
-                      templates[selectedTemplate].services.push(newService); // sync
+                      templates[selectedTemplate].services.push(newService);
                       setCategoryNames(newNames);
                       setCategoryPrices(newPrices);
                     }}
@@ -641,7 +635,7 @@ function App() {
                         }}
                         className="w-16 h-7 text-xs"
                       />
-                      <span className="text-xs text-gray-500">حجم:</span>
+                      <span className="text-xs text-gray-500">حجم اسم:</span>
                       <Input
                         type="number"
                         min={10}
@@ -659,14 +653,14 @@ function App() {
                       />
                       <input
                         type="color"
-                        value={service.color}
+                        value={service.colorLabel || "#000"}
                         onChange={(e) => {
-                          const newTemplate = { ...templates };
-                          newTemplate[selectedTemplate].services[index].color = e.target.value;
-                          templates[selectedTemplate].services[index].color = e.target.value;
-                          setCategoryNames([...categoryNames]);
+                          if (templates[selectedTemplate] && templates[selectedTemplate].services[index]) {
+                            templates[selectedTemplate].services[index].colorLabel = e.target.value;
+                            setCategoryNames([...categoryNames]);
+                          }
                         }}
-                        title="لون السعر"
+                        title="لون اسم الفئة"
                         className="w-7 h-7 p-0 border-0 bg-transparent"
                       />
                     </div>
@@ -688,6 +682,33 @@ function App() {
                         setCategoryPrices(newPrices);
                       }}
                       className="text-sm w-24"
+                    />
+                    <input
+                      type="number"
+                      min={10}
+                      max={200}
+                      value={templates[selectedTemplate]?.services[index]?.fontSize || 54}
+                      onChange={(e) => {
+                        if (templates[selectedTemplate] && templates[selectedTemplate].services[index]) {
+                          templates[selectedTemplate].services[index].fontSize = Number(e.target.value);
+                          setCategoryNames([...categoryNames]); // trigger re-render
+                        }
+                      }}
+                      className="w-14 text-xs border rounded px-1"
+                      title="حجم خط السعر"
+                      style={{ direction: "ltr" }}
+                    />
+                    <input
+                      type="color"
+                      value={templates[selectedTemplate]?.services[index]?.colorValue || "#000"}
+                      onChange={(e) => {
+                        if (templates[selectedTemplate] && templates[selectedTemplate].services[index]) {
+                          templates[selectedTemplate].services[index].colorValue = e.target.value;
+                          setCategoryNames([...categoryNames]); // trigger re-render
+                        }
+                      }}
+                      title="لون خط السعر"
+                      className="w-7 h-7 p-0 border-0 bg-transparent"
                     />
                     <button
                       title="حذف السعر فقط"
