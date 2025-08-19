@@ -689,6 +689,20 @@ function App() {
                       }}
                       className="text-sm w-24"
                     />
+                    <button
+                      title="حذف السعر فقط"
+                      className="text-red-600 hover:text-red-800 text-lg px-1"
+                      onClick={() => {
+                        const newPrices = [...categoryPrices];
+                        newPrices[index] = "";
+                        setCategoryPrices(newPrices);
+                        if (templates[selectedTemplate] && templates[selectedTemplate].services[index]) {
+                          templates[selectedTemplate].services[index].usd = "";
+                        }
+                      }}
+                    >
+                      🗑️
+                    </button>
                     <span className="text-xs">$</span>
                     <span className="text-xs text-green-700 font-bold">
                       = {categoryPrices[index] && !isNaN(Number(categoryPrices[index]))
