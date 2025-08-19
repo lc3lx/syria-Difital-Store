@@ -157,9 +157,23 @@ function App() {
   const [selectedTemplate, setSelectedTemplate] = useState(() => {
     return localStorage.getItem("selectedTemplate") || null;
   });
-  const [services, setServices] = useState(() => {
-    const stored = localStorage.getItem("services");
-    return stored ? JSON.parse(stored) : [];
+  // مصفوفة أسماء الفئات
+  const [categoryNames, setCategoryNames] = useState(() => {
+    const stored = localStorage.getItem("categoryNames");
+    if (stored) return JSON.parse(stored);
+    if (selectedTemplate) {
+      return templates[selectedTemplate].services.map((s) => s.name);
+    }
+    return [];
+  });
+  // مصفوفة أسعار الفئات
+  const [categoryPrices, setCategoryPrices] = useState(() => {
+    const stored = localStorage.getItem("categoryPrices");
+    if (stored) return JSON.parse(stored);
+    if (selectedTemplate) {
+      return templates[selectedTemplate].services.map((s) => s.usd);
+    }
+    return [];
   });
   const [exchangeRate, setExchangeRate] = useState(() => {
     const stored = localStorage.getItem("exchangeRate");
@@ -182,18 +196,22 @@ function App() {
 
   useEffect(() => {
     if (selectedTemplate) {
-      // إذا هناك بيانات مخزنة للقالب الحالي استخدمها، وإلا استخدم القيم الافتراضية
-      const storedServices = localStorage.getItem(
-        `services_${selectedTemplate}`
+      // تحميل أسماء الفئات
+      const storedNames = localStorage.getItem(`categoryNames_${selectedTemplate}`);
+      setCategoryNames(
+        storedNames
+          ? JSON.parse(storedNames)
+          : templates[selectedTemplate].services.map((s) => s.name)
       );
-      setServices(
-        storedServices
-          ? JSON.parse(storedServices)
-          : JSON.parse(JSON.stringify(templates[selectedTemplate].services))
+      // تحميل أسعار الفئات
+      const storedPrices = localStorage.getItem(`categoryPrices_${selectedTemplate}`);
+      setCategoryPrices(
+        storedPrices
+          ? JSON.parse(storedPrices)
+          : templates[selectedTemplate].services.map((s) => s.usd)
       );
-      const storedDate = localStorage.getItem(
-        `templateDate_${selectedTemplate}`
-      );
+      // تحميل التاريخ
+      const storedDate = localStorage.getItem(`templateDate_${selectedTemplate}`);
       if (storedDate) {
         setTemplateDate(JSON.parse(storedDate));
       } else {
@@ -218,12 +236,17 @@ function App() {
   useEffect(() => {
     if (selectedTemplate) {
       localStorage.setItem(
-        `services_${selectedTemplate}`,
-        JSON.stringify(services)
+        `categoryNames_${selectedTemplate}`,
+        JSON.stringify(categoryNames)
+      );
+      localStorage.setItem(
+        `categoryPrices_${selectedTemplate}`,
+        JSON.stringify(categoryPrices)
       );
     }
-    localStorage.setItem("services", JSON.stringify(services));
-  }, [services, selectedTemplate]);
+    localStorage.setItem("categoryNames", JSON.stringify(categoryNames));
+    localStorage.setItem("categoryPrices", JSON.stringify(categoryPrices));
+  }, [categoryNames, categoryPrices, selectedTemplate]);
 
   useEffect(() => {
     localStorage.setItem("exchangeRate", exchangeRate);
@@ -242,27 +265,23 @@ function App() {
   useEffect(() => {
     if (selectedTemplate) drawCanvas();
     // eslint-disable-next-line
-  }, [selectedTemplate, services, exchangeRate]);
+  }, [selectedTemplate, categoryNames, categoryPrices, exchangeRate]);
 
   // إعادة الرسم عند تغيير التاريخ
   useEffect(() => {
     if (selectedTemplate) drawCanvas();
     // eslint-disable-next-line
   }, [templateDate]);
-
-  const updateServicePrice = (serviceIndex, lineIndex, value) => {
-    const newServices = [...services];
-    newServices[serviceIndex].lines[lineIndex].price = value;
-    setServices(newServices);
-  };
-
-  const updateServiceUsd = (index, value) => {
-    const newServices = [...services];
-    newServices[index].usd = value === "" ? "" : Number(value);
-    setServices(newServices);
-  };
+  // تم حذف دوال تعديل الأسعار القديمة لأنها لم تعد مستخدمة
 
   const drawCanvas = () => {
+    console.log("drawCanvas called", {
+      selectedTemplate,
+      categoryNames,
+      categoryPrices,
+      services: templates[selectedTemplate]?.services,
+      canvas: canvasRef.current
+    });
     const canvas = canvasRef.current;
     if (!canvas || !selectedTemplate) return;
     const ctx = canvas.getContext("2d");
@@ -283,17 +302,31 @@ function App() {
           ctx.fillText(templateDate.text, templateDate.x, templateDate.y);
         }
 
-        // Draw prices for template1 (Amazon)
-        services.forEach((service) => {
-          if (service.usd && !isNaN(Number(service.usd))) {
-            const syp = Math.round(Number(service.usd) * exchangeRate);
-            ctx.font = `bold ${service.fontSize || 54}px Arial`;
+        // رسم اسم الفئة والسعر والموقع واللون والحجم من البيانات المنفصلة
+        templates[selectedTemplate].services.forEach((service, idx) => {
+          const name = categoryNames[idx] || "";
+          const usd = categoryPrices[idx];
+          const priceFont = service.fontSize || 54;
+          const nameFont = Math.max(18, priceFont - 14);
+          const drawX = service.x + 30;
+          const drawY = service.y + 30;
+          // رسم الاسم دائماً
+          ctx.font = `bold ${nameFont}px Arial`;
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+          ctx.strokeStyle = "white";
+          ctx.lineWidth = 4;
+          ctx.strokeText(name, drawX, drawY - priceFont);
+          ctx.fillStyle = "#000";
+          ctx.fillText(name, drawX, drawY - priceFont);
+          // رسم السعر إذا كان موجوداً
+          if (usd && !isNaN(Number(usd))) {
+            const syp = Math.round(Number(usd) * exchangeRate);
+            ctx.font = `bold ${priceFont}px Arial`;
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
             ctx.strokeStyle = "white";
             ctx.lineWidth = 5;
-            const drawX = service.x + 30;
-            const drawY = service.y + 30;
             ctx.strokeText(`${syp} `, drawX, drawY);
             ctx.fillStyle = service.color || "#000";
             ctx.fillText(`${syp} `, drawX, drawY);
@@ -311,13 +344,27 @@ function App() {
         services.forEach((service) => {
           if (service.usd && !isNaN(Number(service.usd))) {
             const syp = Math.round(Number(service.usd) * exchangeRate);
-            ctx.font = `bold ${service.fontSize || 54}px Arial`;
+            const priceFont = service.fontSize || 54;
+            const nameFont = Math.max(18, priceFont - 14);
+            const drawX = service.x + 30;
+            const drawY = service.y + 30;
+
+            // Draw category name above price
+            ctx.font = `bold ${nameFont}px Arial`;
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.strokeStyle = "white";
+            ctx.lineWidth = 4;
+            ctx.strokeText(service.name, drawX, drawY - priceFont);
+            ctx.fillStyle = "#000";
+            ctx.fillText(service.name, drawX, drawY - priceFont);
+
+            // Draw price
+            ctx.font = `bold ${priceFont}px Arial`;
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
             ctx.strokeStyle = "white";
             ctx.lineWidth = 5;
-            const drawX = service.x + 30;
-            const drawY = service.y + 30;
             ctx.strokeText(`${syp} `, drawX, drawY);
             ctx.fillStyle = service.color || "#000";
             ctx.fillText(`${syp} `, drawX, drawY);
@@ -518,62 +565,144 @@ function App() {
                 />
               </div>
               <div className="space-y-4 max-h-96 overflow-y-auto p-2">
-                {services.map((service, index) => (
-                      <Card key={index} className="p-3">
-                        <div className="flex justify-between items-center mb-2">
-                          <span className="font-medium text-sm">
-                            {service.name}
-                          </span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Input
-                            placeholder="سعر الخدمة بالدولار"
-                            value={service.usd}
-                            type="number"
-                            min="0"
-                            onChange={(e) =>
-                              updateServiceUsd(index, e.target.value)
-                            }
-                            className="text-sm w-24"
-                          />
-                          <Input
-                            type="number"
-                            min={10}
-                            max={200}
-                            value={service.fontSize}
-                            onChange={(e) => {
-                              const newServices = [...services];
-                              newServices[index].fontSize = Number(
-                                e.target.value
-                              );
-                              setServices(newServices);
-                            }}
-                            className="w-16 text-xs"
-                            placeholder="حجم الخط"
-                            style={{ direction: "ltr" }}
-                          />
-                          <input
-                            type="color"
-                            value={service.color}
-                            onChange={(e) => {
-                              const newServices = [...services];
-                              newServices[index].color = e.target.value;
-                              setServices(newServices);
-                            }}
-                            title="لون السعر"
-                            className="w-8 h-8 p-0 border-0 bg-transparent"
-                          />
-                          <span className="text-xs">$</span>
-                          <span className="text-xs text-green-700 font-bold">
-                            ={" "}
-                            {service.usd && !isNaN(Number(service.usd))
-                              ? Math.round(Number(service.usd) * exchangeRate)
-                              : 0}{" "}
-                            ل.س
-                          </span>
-                        </div>
-                      </Card>
-                    ))}
+                {/* قسم خصائص الفئة */}
+                <div className="flex justify-end mb-2">
+                  <button
+                    className="bg-blue-500 text-white px-3 py-1 rounded text-xs hover:bg-blue-600 transition"
+                    onClick={() => {
+                      // إضافة فئة جديدة
+                      const newNames = [...categoryNames, "فئة جديدة"];
+                      const newPrices = [...categoryPrices, 0];
+                      // خصائص افتراضية للفئة الجديدة
+                      const newService = {
+                        name: "فئة جديدة",
+                        x: 100,
+                        y: 100,
+                        usd: 0,
+                        fontSize: 54,
+                        color: "#000"
+                      };
+                      const newTemplates = { ...templates };
+                      newTemplates[selectedTemplate].services = [
+                        ...newTemplates[selectedTemplate].services,
+                        newService
+                      ];
+                      templates[selectedTemplate].services.push(newService); // sync
+                      setCategoryNames(newNames);
+                      setCategoryPrices(newPrices);
+                    }}
+                  >
+                    + إضافة فئة جديدة
+                  </button>
+                </div>
+                <h4 className="font-bold text-md mb-2 text-blue-700">خصائص الفئة (اسم، موقع، لون، حجم)</h4>
+                {templates[selectedTemplate]?.services.map((service, index) => (
+                  <Card key={index} className="p-3 mb-2">
+                    <div className="flex flex-wrap gap-2 items-center mb-2">
+                      <Input
+                        value={categoryNames[index]}
+                        onChange={(e) => {
+                          const newNames = [...categoryNames];
+                          newNames[index] = e.target.value;
+                          setCategoryNames(newNames);
+                        }}
+                        className="font-medium text-xs w-32"
+                        placeholder="اسم الفئة"
+                      />
+                      <button
+                        title="حذف الفئة"
+                        className="text-red-600 hover:text-red-800 text-lg px-1"
+                        onClick={() => {
+                          const newNames = categoryNames.filter((_, i) => i !== index);
+                          const newPrices = categoryPrices.filter((_, i) => i !== index);
+                          const newServices = templates[selectedTemplate].services.filter((_, i) => i !== index);
+                          templates[selectedTemplate].services = newServices;
+                          setCategoryNames(newNames);
+                          setCategoryPrices(newPrices);
+                        }}
+                      >
+                        🗑️
+                      </button>
+                      <span className="text-xs text-gray-500">X:</span>
+                      <Input
+                        type="number"
+                        value={service.x}
+                        onChange={(e) => {
+                          const newTemplate = { ...templates };
+                          newTemplate[selectedTemplate].services[index].x = Number(e.target.value);
+                          templates[selectedTemplate].services[index].x = Number(e.target.value);
+                          setCategoryNames([...categoryNames]);
+                        }}
+                        className="w-16 h-7 text-xs"
+                      />
+                      <span className="text-xs text-gray-500">Y:</span>
+                      <Input
+                        type="number"
+                        value={service.y}
+                        onChange={(e) => {
+                          const newTemplate = { ...templates };
+                          newTemplate[selectedTemplate].services[index].y = Number(e.target.value);
+                          templates[selectedTemplate].services[index].y = Number(e.target.value);
+                          setCategoryNames([...categoryNames]);
+                        }}
+                        className="w-16 h-7 text-xs"
+                      />
+                      <span className="text-xs text-gray-500">حجم:</span>
+                      <Input
+                        type="number"
+                        min={10}
+                        max={200}
+                        value={service.fontSize}
+                        onChange={(e) => {
+                          const newTemplate = { ...templates };
+                          newTemplate[selectedTemplate].services[index].fontSize = Number(e.target.value);
+                          templates[selectedTemplate].services[index].fontSize = Number(e.target.value);
+                          setCategoryNames([...categoryNames]);
+                        }}
+                        className="w-14 text-xs"
+                        placeholder="حجم الخط"
+                        style={{ direction: "ltr" }}
+                      />
+                      <input
+                        type="color"
+                        value={service.color}
+                        onChange={(e) => {
+                          const newTemplate = { ...templates };
+                          newTemplate[selectedTemplate].services[index].color = e.target.value;
+                          templates[selectedTemplate].services[index].color = e.target.value;
+                          setCategoryNames([...categoryNames]);
+                        }}
+                        title="لون السعر"
+                        className="w-7 h-7 p-0 border-0 bg-transparent"
+                      />
+                    </div>
+                  </Card>
+                ))}
+                {/* قسم الأسعار */}
+                <h4 className="font-bold text-md mb-2 text-green-700 mt-4">القيم (السعر بالدولار فقط)</h4>
+                {categoryPrices.map((price, index) => (
+                  <Card key={index} className="p-2 mb-2 flex flex-row items-center gap-2">
+                    <span className="font-medium text-xs w-32 truncate">{categoryNames[index]}</span>
+                    <Input
+                      placeholder="سعر الفئة بالدولار"
+                      value={categoryPrices[index]}
+                      type="number"
+                      min="0"
+                      onChange={(e) => {
+                        const newPrices = [...categoryPrices];
+                        newPrices[index] = e.target.value === "" ? "" : Number(e.target.value);
+                        setCategoryPrices(newPrices);
+                      }}
+                      className="text-sm w-24"
+                    />
+                    <span className="text-xs">$</span>
+                    <span className="text-xs text-green-700 font-bold">
+                      = {categoryPrices[index] && !isNaN(Number(categoryPrices[index]))
+                        ? Math.round(Number(categoryPrices[index]) * exchangeRate)
+                        : 0} ل.س
+                    </span>
+                  </Card>
+                ))}
               </div>
             </div>
           </div>
