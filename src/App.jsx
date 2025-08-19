@@ -157,23 +157,19 @@ function App() {
   const [selectedTemplate, setSelectedTemplate] = useState(() => {
     return localStorage.getItem("selectedTemplate") || null;
   });
-  // مصفوفة أسماء الفئات
+  // مصفوفة أسماء الفئات لكل قالب
   const [categoryNames, setCategoryNames] = useState(() => {
-    const stored = localStorage.getItem("categoryNames");
+    if (!selectedTemplate) return [];
+    const stored = localStorage.getItem(`categoryNames_${selectedTemplate}`);
     if (stored) return JSON.parse(stored);
-    if (selectedTemplate) {
-      return templates[selectedTemplate].services.map((s) => s.name);
-    }
-    return [];
+    return templates[selectedTemplate].services.map((s) => s.name);
   });
-  // مصفوفة أسعار الفئات
+  // مصفوفة أسعار الفئات لكل قالب
   const [categoryPrices, setCategoryPrices] = useState(() => {
-    const stored = localStorage.getItem("categoryPrices");
+    if (!selectedTemplate) return [];
+    const stored = localStorage.getItem(`categoryPrices_${selectedTemplate}`);
     if (stored) return JSON.parse(stored);
-    if (selectedTemplate) {
-      return templates[selectedTemplate].services.map((s) => s.usd);
-    }
-    return [];
+    return templates[selectedTemplate].services.map((s) => s.usd);
   });
   const [exchangeRate, setExchangeRate] = useState(() => {
     const stored = localStorage.getItem("exchangeRate");
@@ -196,14 +192,14 @@ function App() {
 
   useEffect(() => {
     if (selectedTemplate) {
-      // تحميل أسماء الفئات
+      // تحميل أسماء الفئات الخاصة بالقالب
       const storedNames = localStorage.getItem(`categoryNames_${selectedTemplate}`);
       setCategoryNames(
         storedNames
           ? JSON.parse(storedNames)
           : templates[selectedTemplate].services.map((s) => s.name)
       );
-      // تحميل أسعار الفئات
+      // تحميل أسعار الفئات الخاصة بالقالب
       const storedPrices = localStorage.getItem(`categoryPrices_${selectedTemplate}`);
       setCategoryPrices(
         storedPrices
@@ -244,8 +240,6 @@ function App() {
         JSON.stringify(categoryPrices)
       );
     }
-    localStorage.setItem("categoryNames", JSON.stringify(categoryNames));
-    localStorage.setItem("categoryPrices", JSON.stringify(categoryPrices));
   }, [categoryNames, categoryPrices, selectedTemplate]);
 
   useEffect(() => {
