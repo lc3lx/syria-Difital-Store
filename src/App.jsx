@@ -335,38 +335,46 @@ function App() {
           ctx.textBaseline = "middle";
           ctx.fillText(templateDate.text, templateDate.x, templateDate.y);
         }
-        services.forEach((service) => {
-          if (service.usd && !isNaN(Number(service.usd))) {
-            const syp = Math.round(Number(service.usd) * exchangeRate);
-            const priceFont = service.fontSize || 54;
-            const nameFont = Math.max(18, priceFont - 14);
-            const drawX = service.x + 30;
-            const drawY = service.y + 30;
 
-            // Draw category name above price
-            ctx.font = `bold ${nameFont}px Arial`;
-            ctx.textAlign = "center";
-            ctx.textBaseline = "middle";
-            ctx.strokeStyle = "white";
-            ctx.lineWidth = 4;
-            ctx.strokeText(service.name, drawX, drawY - priceFont);
-            ctx.fillStyle = service.colorLabel || "#000";
-            ctx.fillText(service.name, drawX, drawY - priceFont);
+        // رسم الخدمات
+        templates[selectedTemplate].services.forEach((service, index) => {
+          const usd = categoryPrices && categoryPrices[index] !== undefined ? categoryPrices[index] : service.usd;
+          const syp = usd && !isNaN(Number(usd)) ? Math.round(Number(usd) * exchangeRate) : '';
+          const priceFont = service.fontSize || 54;
+          const nameFont = Math.max(18, priceFont - 14);
+          const drawX = service.x + 30;
+          const drawY = service.y + 30;
 
-            // Draw price
+          // رسم اسم الفئة في موقع مستقل
+          ctx.font = `bold ${nameFont}px Arial`;
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+          ctx.strokeStyle = "white";
+          ctx.lineWidth = 4;
+          const nameX = service.xName !== undefined ? service.xName : (service.x !== undefined ? service.x + 30 : 130);
+          const nameY = service.yName !== undefined ? service.yName : (service.y !== undefined ? service.y + 30 - priceFont : 130);
+          ctx.strokeText(service.name, nameX, nameY);
+          ctx.fillStyle = service.colorLabel || "#000";
+          ctx.fillText(service.name, nameX, nameY);
+
+          // رسم السعر في موقع مستقل إذا كان رقم
+          if (usd && !isNaN(Number(usd))) {
             ctx.font = `bold ${priceFont}px Arial`;
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
             ctx.strokeStyle = "white";
             ctx.lineWidth = 5;
-            ctx.strokeText(`${syp} `, drawX, drawY);
+            const priceX = service.xValue !== undefined ? service.xValue : (service.x !== undefined ? service.x + 30 : 130);
+            const priceY = service.yValue !== undefined ? service.yValue : (service.y !== undefined ? service.y + 30 : 180);
+            ctx.strokeText(`${syp} `, priceX, priceY);
             ctx.fillStyle = service.colorValue || "#000";
-            ctx.fillText(`${syp} `, drawX, drawY);
+            ctx.fillText(`${syp} `, priceX, priceY);
           }
         });
       }
     };
     img.src = templates[selectedTemplate].image;
+// ...
   };
 
   const downloadImage = () => {
@@ -611,27 +619,51 @@ function App() {
                       >
                         🗑️
                       </button>
-                      <span className="text-xs text-gray-500">X:</span>
+                      <span className="text-xs text-gray-500">X اسم:</span>
                       <Input
                         type="number"
-                        value={service.x}
+                        value={service.xName || 100}
                         onChange={(e) => {
-                          const newTemplate = { ...templates };
-                          newTemplate[selectedTemplate].services[index].x = Number(e.target.value);
-                          templates[selectedTemplate].services[index].x = Number(e.target.value);
-                          setCategoryNames([...categoryNames]);
+                          if (templates[selectedTemplate] && templates[selectedTemplate].services[index]) {
+                            templates[selectedTemplate].services[index].xName = Number(e.target.value);
+                            setCategoryNames([...categoryNames]);
+                          }
                         }}
                         className="w-16 h-7 text-xs"
                       />
-                      <span className="text-xs text-gray-500">Y:</span>
+                      <span className="text-xs text-gray-500">Y اسم:</span>
                       <Input
                         type="number"
-                        value={service.y}
+                        value={service.yName || 100}
                         onChange={(e) => {
-                          const newTemplate = { ...templates };
-                          newTemplate[selectedTemplate].services[index].y = Number(e.target.value);
-                          templates[selectedTemplate].services[index].y = Number(e.target.value);
-                          setCategoryNames([...categoryNames]);
+                          if (templates[selectedTemplate] && templates[selectedTemplate].services[index]) {
+                            templates[selectedTemplate].services[index].yName = Number(e.target.value);
+                            setCategoryNames([...categoryNames]);
+                          }
+                        }}
+                        className="w-16 h-7 text-xs"
+                      />
+                      <span className="text-xs text-gray-500">X سعر:</span>
+                      <Input
+                        type="number"
+                        value={service.xValue || 100}
+                        onChange={(e) => {
+                          if (templates[selectedTemplate] && templates[selectedTemplate].services[index]) {
+                            templates[selectedTemplate].services[index].xValue = Number(e.target.value);
+                            setCategoryNames([...categoryNames]);
+                          }
+                        }}
+                        className="w-16 h-7 text-xs"
+                      />
+                      <span className="text-xs text-gray-500">Y سعر:</span>
+                      <Input
+                        type="number"
+                        value={service.yValue || 100}
+                        onChange={(e) => {
+                          if (templates[selectedTemplate] && templates[selectedTemplate].services[index]) {
+                            templates[selectedTemplate].services[index].yValue = Number(e.target.value);
+                            setCategoryNames([...categoryNames]);
+                          }
                         }}
                         className="w-16 h-7 text-xs"
                       />
@@ -682,6 +714,34 @@ function App() {
                         setCategoryPrices(newPrices);
                       }}
                       className="text-sm w-24"
+                    />
+                    <span className="text-xs text-gray-500">X سعر:</span>
+                    <Input
+                      type="number"
+                      value={templates[selectedTemplate]?.services[index]?.xValue || 100}
+                      onChange={(e) => {
+                        if (templates[selectedTemplate] && templates[selectedTemplate].services[index]) {
+                          templates[selectedTemplate].services[index].xValue = Number(e.target.value);
+                          setCategoryNames([...categoryNames]); // trigger re-render
+                        }
+                      }}
+                      className="w-14 text-xs border rounded px-1"
+                      title="موقع X للسعر"
+                      style={{ direction: "ltr" }}
+                    />
+                    <span className="text-xs text-gray-500">Y سعر:</span>
+                    <Input
+                      type="number"
+                      value={templates[selectedTemplate]?.services[index]?.yValue || 100}
+                      onChange={(e) => {
+                        if (templates[selectedTemplate] && templates[selectedTemplate].services[index]) {
+                          templates[selectedTemplate].services[index].yValue = Number(e.target.value);
+                          setCategoryNames([...categoryNames]); // trigger re-render
+                        }
+                      }}
+                      className="w-14 text-xs border rounded px-1"
+                      title="موقع Y للسعر"
+                      style={{ direction: "ltr" }}
                     />
                     <input
                       type="number"
