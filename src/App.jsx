@@ -20,26 +20,26 @@ const templates = {
     date: { text: "21-7-2025", x: 850, y: 220 },
     services: [
       // Column 1: USA
-      { name: "USA 5", x: 140, y: 450, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
-      { name: "USA 10-15-25", x: 380, y: 450, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
-      { name: "USA 20-..-100", x: 650, y: 450, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
-      { name: "USA مكسر", x: 900, y: 450, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
+      { name: "USA 5", xName: 140, yName: 450, fontSizeName: 40, colorName: "#000", xValue: 140, yValue: 490, fontSizeValue: 54, colorValue: "#000", usd: 0 },
+      { name: "USA 10-15-25", xName: 380, yName: 450, fontSizeName: 40, colorName: "#000", xValue: 380, yValue: 490, fontSizeValue: 54, colorValue: "#000", usd: 0 },
+      { name: "USA 20-..-100", xName: 650, yName: 450, fontSizeName: 40, colorName: "#000", xValue: 650, yValue: 490, fontSizeValue: 54, colorValue: "#000", usd: 0 },
+      { name: "USA مكسر", xName: 900, yName: 450, fontSizeName: 40, colorName: "#000", xValue: 900, yValue: 490, fontSizeValue: 54, colorValue: "#000", usd: 0 },
 
       // Column 2: Germany & UK
-      { name: "Germany 5", x: 140, y: 710, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
-      { name: "Germany 10-15-25", x: 380, y: 700, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
-      { name: "Germany 30-40-50", x: 650, y: 700, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
-      { name: "UK 5 15 20", x: 140, y: 1200, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
-      { name: "UK 25 - 30 -40", x: 380, y: 1200, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
-      { name: "UK 50 - 100", x: 650, y: 1200, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
-      { name: "UK", x: 900, y: 1200, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
+      { name: "Germany 5", xName: 140, yName: 710, fontSizeName: 40, colorName: "#000", xValue: 140, yValue: 750, fontSizeValue: 54, colorValue: "#000", usd: 0 },
+      { name: "Germany 10-15-25", xName: 380, yName: 700, fontSizeName: 40, colorName: "#000", xValue: 380, yValue: 740, fontSizeValue: 54, colorValue: "#000", usd: 0 },
+      { name: "Germany 30-40-50", xName: 650, yName: 700, fontSizeName: 40, colorName: "#000", xValue: 650, yValue: 740, fontSizeValue: 54, colorValue: "#000", usd: 0 },
+      { name: "UK 5 15 20", xName: 140, yName: 1200, fontSizeName: 40, colorName: "#000", xValue: 140, yValue: 1240, fontSizeValue: 54, colorValue: "#000", usd: 0 },
+      { name: "UK 25 - 30 -40", xName: 380, yName: 1200, fontSizeName: 40, colorName: "#000", xValue: 380, yValue: 1240, fontSizeValue: 54, colorValue: "#000", usd: 0 },
+      { name: "UK 50 - 100", xName: 650, yName: 1200, fontSizeName: 40, colorName: "#000", xValue: 650, yValue: 1240, fontSizeValue: 54, colorValue: "#000", usd: 0 },
+      { name: "UK", xName: 900, yName: 1200, fontSizeName: 40, colorName: "#000", xValue: 900, yValue: 1240, fontSizeValue: 54, colorValue: "#000", usd: 0 },
 
       // Column 3: France & Italy
-      { name: "Italy 5 - 40", x: 650, y: 960, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
-      { name: "France 5", x: 900, y: 720, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
-      { name: "France 20", x: 390, y: 960, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
-      { name: "France 10-15-25-30-40-50", x: 140, y: 960, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
-      { name: "Italy 10-15-25-30-50", x: 900, y: 960, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" }
+      { name: "Italy 5 - 40", xName: 650, yName: 960, fontSizeName: 40, colorName: "#000", xValue: 650, yValue: 1000, fontSizeValue: 54, colorValue: "#000", usd: 0 },
+      { name: "France 5", xName: 900, yName: 720, fontSizeName: 40, colorName: "#000", xValue: 900, yValue: 760, fontSizeValue: 54, colorValue: "#000", usd: 0 },
+      { name: "France 20", xName: 390, yName: 960, fontSizeName: 40, colorName: "#000", xValue: 390, yValue: 1000, fontSizeValue: 54, colorValue: "#000", usd: 0 },
+      { name: "France 10-15-25-30-40-50", xName: 140, yName: 960, fontSizeName: 40, colorName: "#000", xValue: 140, yValue: 1000, fontSizeValue: 54, colorValue: "#000", usd: 0 },
+      { name: "Italy 10-15-25-30-50", xName: 900, yName: 960, fontSizeName: 40, colorName: "#000", xValue: 900, yValue: 1000, fontSizeValue: 54, colorValue: "#000", usd: 0 }
     ],
   },
   template2: {
@@ -48,106 +48,26 @@ const templates = {
     date: { text: "21-7-2025", x: 850, y: 220 },
     services: [
       // نفس أماكن قالب أمازون، مع أسماء الخدمات الرقمية
-      { name: "USDT", x: 105, y: 430, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
-      { name: "Payeer", x: 310, y: 430, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
-      {
-        name: "iTunes USA 1",
-        x: 525,
-        y: 440,
-        usd: 0,
-        fontSize: 54,
-        colorLabel: "#000", colorValue: "#000",
-      },
-      {
-        name: "iTunes USA 2",
-        x: 730,
-        y: 440,
-        usd: 0,
-        fontSize: 54,
-        colorLabel: "#000", colorValue: "#000",
-      },
-      {
-        name: "iTunes USA 3",
-        x: 935,
-        y: 470,
-        usd: 0,
-        fontSize: 54,
-        colorLabel: "#000", colorValue: "#000",
-      },
-
-      {
-        name: "Rezer Gold",
-        x: 105,
-        y: 680,
-        usd: 0,
-        fontSize: 54,
-        colorLabel: "#000", colorValue: "#000",
-      },
-      {
-        name: "walmart 1",
-        x: 310,
-        y: 690,
-        usd: 0,
-        fontSize: 54,
-        colorLabel: "#000", colorValue: "#000",
-      },
-      {
-        name: "walmart 2",
-        x: 525,
-        y: 690,
-        usd: 0,
-        fontSize: 54,
-        colorLabel: "#000", colorValue: "#000",
-      },
-      {
-        name: "walmart 3",
-        x: 730,
-        y: 710,
-        usd: 0,
-        fontSize: 54,
-        colorLabel: "#000", colorValue: "#000",
-      },
-      { name: "Target 1", x: 935, y: 700, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
-
-      { name: "Target 2", x: 105, y: 950, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
-      { name: "Steam", x: 310, y: 940, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
-      {
-        name: "Paypal Send",
-        x: 525,
-        y: 940,
-        usd: 0,
-        fontSize: 54,
-        colorLabel: "#000", colorValue: "#000",
-      },
-      {
-        name: "Paypal Link",
-        x: 730,
-        y: 940,
-        usd: 0,
-        fontSize: 54,
-        colorLabel: "#000", colorValue: "#000",
-      },
-      {
-        name: "playstation",
-        x: 935,
-        y: 940,
-        usd: 0,
-        fontSize: 54,
-        colorLabel: "#000", colorValue: "#000",
-      },
-
-      { name: "master", x: 105, y: 1180, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
-      { name: "Visa", x: 310, y: 1180, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
-      { name: "Uber 1", x: 525, y: 1200, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" },
-      { name: "Uber 2", x: 730, y: 1200, usd: 0, fontSize: 54, colorLabel: "#000", colorValue: "#000" }, // مكان إضافي إذا أردت تكرار أو إضافة خدمة أخرى
-      {
-        name: "starbucks",
-        x: 935,
-        y: 1180,
-        usd: 0,
-        fontSize: 54,
-        colorLabel: "#000", colorValue: "#000",
-      }, // مكان إضافي
+      { name: "USDT", xName: 105, yName: 430, fontSizeName: 40, colorName: "#000", xValue: 105, yValue: 470, fontSizeValue: 54, colorValue: "#000", usd: 0 },
+      { name: "Payeer", xName: 310, yName: 430, fontSizeName: 40, colorName: "#000", xValue: 310, yValue: 470, fontSizeValue: 54, colorValue: "#000", usd: 0 },
+      { name: "iTunes USA 1", xName: 525, yName: 440, fontSizeName: 40, colorName: "#000", xValue: 525, yValue: 480, fontSizeValue: 54, colorValue: "#000", usd: 0 },
+      { name: "iTunes USA 2", xName: 730, yName: 440, fontSizeName: 40, colorName: "#000", xValue: 730, yValue: 480, fontSizeValue: 54, colorValue: "#000", usd: 0 },
+      { name: "iTunes USA 3", xName: 935, yName: 470, fontSizeName: 40, colorName: "#000", xValue: 935, yValue: 510, fontSizeValue: 54, colorValue: "#000", usd: 0 },
+      { name: "Rezer Gold", xName: 105, yName: 680, fontSizeName: 40, colorName: "#000", xValue: 105, yValue: 720, fontSizeValue: 54, colorValue: "#000", usd: 0 },
+      { name: "walmart 1", xName: 310, yName: 690, fontSizeName: 40, colorName: "#000", xValue: 310, yValue: 730, fontSizeValue: 54, colorValue: "#000", usd: 0 },
+      { name: "walmart 2", xName: 525, yName: 690, fontSizeName: 40, colorName: "#000", xValue: 525, yValue: 730, fontSizeValue: 54, colorValue: "#000", usd: 0 },
+      { name: "walmart 3", xName: 730, yName: 710, fontSizeName: 40, colorName: "#000", xValue: 730, yValue: 750, fontSizeValue: 54, colorValue: "#000", usd: 0 },
+      { name: "Target 1", xName: 935, yName: 700, fontSizeName: 40, colorName: "#000", xValue: 935, yValue: 740, fontSizeValue: 54, colorValue: "#000", usd: 0 },
+      { name: "Target 2", xName: 105, yName: 950, fontSizeName: 40, colorName: "#000", xValue: 105, yValue: 990, fontSizeValue: 54, colorValue: "#000", usd: 0 },
+      { name: "Steam", xName: 310, yName: 940, fontSizeName: 40, colorName: "#000", xValue: 310, yValue: 980, fontSizeValue: 54, colorValue: "#000", usd: 0 },
+      { name: "Paypal Send", xName: 525, yName: 940, fontSizeName: 40, colorName: "#000", xValue: 525, yValue: 980, fontSizeValue: 54, colorValue: "#000", usd: 0 },
+      { name: "Paypal Link", xName: 730, yName: 940, fontSizeName: 40, colorName: "#000", xValue: 730, yValue: 980, fontSizeValue: 54, colorValue: "#000", usd: 0 },
+      { name: "playstation", xName: 935, yName: 940, fontSizeName: 40, colorName: "#000", xValue: 935, yValue: 980, fontSizeValue: 54, colorValue: "#000", usd: 0 },
+      { name: "master", xName: 105, yName: 1180, fontSizeName: 40, colorName: "#000", xValue: 105, yValue: 1220, fontSizeValue: 54, colorValue: "#000", usd: 0 },
+      { name: "Visa", xName: 310, yName: 1180, fontSizeName: 40, colorName: "#000", xValue: 310, yValue: 1220, fontSizeValue: 54, colorValue: "#000", usd: 0 },
+      { name: "Uber 1", xName: 525, yName: 1200, fontSizeName: 40, colorName: "#000", xValue: 525, yValue: 1240, fontSizeValue: 54, colorValue: "#000", usd: 0 },
+      { name: "Uber 2", xName: 730, yName: 1200, fontSizeName: 40, colorName: "#000", xValue: 730, yValue: 1240, fontSizeValue: 54, colorValue: "#000", usd: 0 },
+      { name: "starbucks", xName: 935, yName: 1180, fontSizeName: 40, colorName: "#000", xValue: 935, yValue: 1220, fontSizeValue: 54, colorValue: "#000", usd: 0 },
     ],
   },
 };
@@ -296,34 +216,30 @@ function App() {
           ctx.fillText(templateDate.text, templateDate.x, templateDate.y);
         }
 
-        // رسم اسم الفئة والسعر والموقع واللون والحجم من البيانات المنفصلة
+        // رسم الخدمات مع تحكم كامل لكل خاصية (مثل القالب الرقمي)
         templates[selectedTemplate].services.forEach((service, idx) => {
           const name = categoryNames[idx] || "";
           const usd = categoryPrices[idx];
-          const priceFont = service.fontSize || 54;
-          const nameFont = Math.max(18, priceFont - 14);
-          const drawX = service.x + 30;
-          const drawY = service.y + 30;
-          // رسم الاسم دائماً
-          ctx.font = `bold ${nameFont}px Arial`;
+          // رسم الاسم
+          ctx.font = `bold ${service.fontSizeName || 40}px Arial`;
           ctx.textAlign = "center";
           ctx.textBaseline = "middle";
           ctx.strokeStyle = "white";
           ctx.lineWidth = 4;
-          ctx.strokeText(name, drawX, drawY - priceFont);
-          ctx.fillStyle = service.colorLabel || "#000";
-          ctx.fillText(name, drawX, drawY - priceFont);
+          ctx.strokeText(name, service.xName, service.yName);
+          ctx.fillStyle = service.colorName || "#000";
+          ctx.fillText(name, service.xName, service.yName);
           // رسم السعر إذا كان موجوداً
           if (usd && !isNaN(Number(usd))) {
             const syp = Math.round(Number(usd) * exchangeRate);
-            ctx.font = `bold ${priceFont}px Arial`;
+            ctx.font = `bold ${service.fontSizeValue || 54}px Arial`;
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
             ctx.strokeStyle = "white";
             ctx.lineWidth = 5;
-            ctx.strokeText(`${syp} `, drawX, drawY);
+            ctx.strokeText(`${syp} `, service.xValue, service.yValue);
             ctx.fillStyle = service.colorValue || "#000";
-            ctx.fillText(`${syp} `, drawX, drawY);
+            ctx.fillText(`${syp} `, service.xValue, service.yValue);
           }
         });
       } else {
@@ -336,39 +252,30 @@ function App() {
           ctx.fillText(templateDate.text, templateDate.x, templateDate.y);
         }
 
-        // رسم الخدمات
-        templates[selectedTemplate].services.forEach((service, index) => {
-          const usd = categoryPrices && categoryPrices[index] !== undefined ? categoryPrices[index] : service.usd;
-          const syp = usd && !isNaN(Number(usd)) ? Math.round(Number(usd) * exchangeRate) : '';
-          const priceFont = service.fontSize || 54;
-          const nameFont = Math.max(18, priceFont - 14);
-          const drawX = service.x + 30;
-          const drawY = service.y + 30;
-
-          // رسم اسم الفئة في موقع مستقل
-          ctx.font = `bold ${nameFont}px Arial`;
+        // رسم الخدمات مع تحكم كامل لكل خاصية
+        templates[selectedTemplate].services.forEach((service, idx) => {
+          const name = categoryNames[idx] || "";
+          const usd = categoryPrices[idx];
+          // رسم الاسم
+          ctx.font = `bold ${service.fontSizeName || 40}px Arial`;
           ctx.textAlign = "center";
           ctx.textBaseline = "middle";
           ctx.strokeStyle = "white";
           ctx.lineWidth = 4;
-          const nameX = service.xName !== undefined ? service.xName : (service.x !== undefined ? service.x + 30 : 130);
-          const nameY = service.yName !== undefined ? service.yName : (service.y !== undefined ? service.y + 30 - priceFont : 130);
-          ctx.strokeText(service.name, nameX, nameY);
-          ctx.fillStyle = service.colorLabel || "#000";
-          ctx.fillText(service.name, nameX, nameY);
-
-          // رسم السعر في موقع مستقل إذا كان رقم
+          ctx.strokeText(name, service.xName, service.yName);
+          ctx.fillStyle = service.colorName || "#000";
+          ctx.fillText(name, service.xName, service.yName);
+          // رسم السعر إذا كان موجوداً
           if (usd && !isNaN(Number(usd))) {
-            ctx.font = `bold ${priceFont}px Arial`;
+            const syp = Math.round(Number(usd) * exchangeRate);
+            ctx.font = `bold ${service.fontSizeValue || 54}px Arial`;
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
             ctx.strokeStyle = "white";
             ctx.lineWidth = 5;
-            const priceX = service.xValue !== undefined ? service.xValue : (service.x !== undefined ? service.x + 30 : 130);
-            const priceY = service.yValue !== undefined ? service.yValue : (service.y !== undefined ? service.y + 30 : 180);
-            ctx.strokeText(`${syp} `, priceX, priceY);
+            ctx.strokeText(`${syp} `, service.xValue, service.yValue);
             ctx.fillStyle = service.colorValue || "#000";
-            ctx.fillText(`${syp} `, priceX, priceY);
+            ctx.fillText(`${syp} `, service.xValue, service.yValue);
           }
         });
       }
@@ -595,6 +502,7 @@ function App() {
                 {templates[selectedTemplate]?.services.map((service, index) => (
                   <Card key={index} className="p-3 mb-2">
                     <div className="flex flex-wrap gap-2 items-center mb-2">
+                      {/* اسم الفئة */}
                       <Input
                         value={categoryNames[index]}
                         onChange={(e) => {
@@ -619,74 +527,81 @@ function App() {
                       >
                         🗑️
                       </button>
-                      <span className="text-xs text-gray-500">X اسم:</span>
+                      <span className="text-xs text-blue-700 font-bold">خصائص الاسم:</span>
+                      <span className="text-xs text-gray-500">X:</span>
                       <Input
                         type="number"
                         value={service.xName || 100}
                         onChange={(e) => {
-                          if (templates[selectedTemplate] && templates[selectedTemplate].services[index]) {
-                            templates[selectedTemplate].services[index].xName = Number(e.target.value);
-                            setCategoryNames([...categoryNames]);
-                          }
+                          templates[selectedTemplate].services[index].xName = Number(e.target.value);
+                          setCategoryNames([...categoryNames]);
                         }}
-                        className="w-16 h-7 text-xs"
+                        className="w-14 h-7 text-xs"
                       />
-                      <span className="text-xs text-gray-500">Y اسم:</span>
+                      <span className="text-xs text-gray-500">Y:</span>
                       <Input
                         type="number"
                         value={service.yName || 100}
                         onChange={(e) => {
-                          if (templates[selectedTemplate] && templates[selectedTemplate].services[index]) {
-                            templates[selectedTemplate].services[index].yName = Number(e.target.value);
-                            setCategoryNames([...categoryNames]);
-                          }
+                          templates[selectedTemplate].services[index].yName = Number(e.target.value);
+                          setCategoryNames([...categoryNames]);
                         }}
-                        className="w-16 h-7 text-xs"
+                        className="w-14 h-7 text-xs"
                       />
-                      <span className="text-xs text-gray-500">X سعر:</span>
-                      <Input
-                        type="number"
-                        value={service.xValue || 100}
-                        onChange={(e) => {
-                          if (templates[selectedTemplate] && templates[selectedTemplate].services[index]) {
-                            templates[selectedTemplate].services[index].xValue = Number(e.target.value);
-                            setCategoryNames([...categoryNames]);
-                          }
-                        }}
-                        className="w-16 h-7 text-xs"
-                      />
-                      <span className="text-xs text-gray-500">Y سعر:</span>
-                      <Input
-                        type="number"
-                        value={service.yValue || 100}
-                        onChange={(e) => {
-                          if (templates[selectedTemplate] && templates[selectedTemplate].services[index]) {
-                            templates[selectedTemplate].services[index].yValue = Number(e.target.value);
-                            setCategoryNames([...categoryNames]);
-                          }
-                        }}
-                        className="w-16 h-7 text-xs"
-                      />
-                      <span className="text-xs text-gray-500">حجم اسم:</span>
+                      <span className="text-xs text-gray-500">حجم:</span>
                       <Input
                         type="number"
                         min={10}
                         max={200}
-                        value={service.fontSize}
+                        value={service.fontSizeName || 40}
                         onChange={(e) => {
-                          const newTemplate = { ...templates };
-                          newTemplate[selectedTemplate].services[index].fontSize = Number(e.target.value);
-                          templates[selectedTemplate].services[index].fontSize = Number(e.target.value);
+                          templates[selectedTemplate].services[index].fontSizeName = Number(e.target.value);
                           setCategoryNames([...categoryNames]);
                         }}
-                        className="w-14 text-xs"
-                        placeholder="حجم الخط"
+                        className="w-12 text-xs"
+                        placeholder="حجم اسم"
                         style={{ direction: "ltr" }}
                       />
                       <input
                         type="color"
-                        value={service.colorLabel || "#000"}
+                        value={service.colorName || "#000"}
                         onChange={(e) => {
+                          templates[selectedTemplate].services[index].colorName = e.target.value;
+                          setCategoryNames([...categoryNames]);
+                        }}
+                        title="لون اسم الفئة"
+                        className="w-7 h-7 p-0 border-0 bg-transparent"
+                      />
+                      <span className="text-xs text-green-700 font-bold ml-4">خصائص السعر:</span>
+                      <span className="text-xs text-gray-500">X:</span>
+                      <Input
+                        type="number"
+                        value={service.xValue || 100}
+                        onChange={(e) => {
+                          templates[selectedTemplate].services[index].xValue = Number(e.target.value);
+                          setCategoryNames([...categoryNames]);
+                        }}
+                        className="w-14 h-7 text-xs"
+                      />
+                      <span className="text-xs text-gray-500">Y:</span>
+                      <Input
+                        type="number"
+                        value={service.yValue || 100}
+                        onChange={(e) => {
+                          templates[selectedTemplate].services[index].yValue = Number(e.target.value);
+                          setCategoryNames([...categoryNames]);
+                        }}
+                        className="w-14 text-xs"
+                      />
+                      <span className="text-xs text-gray-500">حجم:</span>
+                      <Input
+                        type="number"
+                        min={10}
+                        max={200}
+                        value={service.fontSizeValue || 54}
+                        onChange={(e) => {
+                          templates[selectedTemplate].services[index].fontSizeValue = Number(e.target.value);
+                          setCategoryNames([...categoryNames]);
                           if (templates[selectedTemplate] && templates[selectedTemplate].services[index]) {
                             templates[selectedTemplate].services[index].colorLabel = e.target.value;
                             setCategoryNames([...categoryNames]);
@@ -743,14 +658,14 @@ function App() {
                       title="موقع Y للسعر"
                       style={{ direction: "ltr" }}
                     />
-                    <input
+                    <Input
                       type="number"
                       min={10}
                       max={200}
-                      value={templates[selectedTemplate]?.services[index]?.fontSize || 54}
+                      value={templates[selectedTemplate]?.services[index]?.fontSizeValue || 54}
                       onChange={(e) => {
                         if (templates[selectedTemplate] && templates[selectedTemplate].services[index]) {
-                          templates[selectedTemplate].services[index].fontSize = Number(e.target.value);
+                          templates[selectedTemplate].services[index].fontSizeValue = Number(e.target.value);
                           setCategoryNames([...categoryNames]); // trigger re-render
                         }
                       }}
@@ -767,8 +682,8 @@ function App() {
                           setCategoryNames([...categoryNames]); // trigger re-render
                         }
                       }}
-                      title="لون خط السعر"
-                      className="w-7 h-7 p-0 border-0 bg-transparent"
+                      className="w-10 h-10 p-0 border-none bg-transparent"
+                      title="لون السعر"
                     />
                     <button
                       title="حذف السعر فقط"
