@@ -95,6 +95,11 @@ function App() {
     const stored = localStorage.getItem("exchangeRate");
     return stored ? Number(stored) : 15000;
   });
+  // المسافة بين أسطر الفئة
+  const [categoryLineSpacing, setCategoryLineSpacing] = useState(() => {
+    const stored = localStorage.getItem("categoryLineSpacing");
+    return stored ? Number(stored) : 1.2;
+  });
   // تاريخ القالب
   const [templateDate, setTemplateDate] = useState(() => {
     const stored = localStorage.getItem("templateDate");
@@ -167,6 +172,10 @@ function App() {
   }, [exchangeRate]);
 
   useEffect(() => {
+    localStorage.setItem("categoryLineSpacing", categoryLineSpacing);
+  }, [categoryLineSpacing]);
+
+  useEffect(() => {
     if (selectedTemplate) {
       localStorage.setItem(
         `templateDate_${selectedTemplate}`,
@@ -179,7 +188,7 @@ function App() {
   useEffect(() => {
     if (selectedTemplate) drawCanvas();
     // eslint-disable-next-line
-  }, [selectedTemplate, categoryNames, categoryPrices, exchangeRate]);
+  }, [selectedTemplate, categoryNames, categoryPrices, exchangeRate, categoryLineSpacing]);
 
   // إعادة الرسم عند تغيير التاريخ
   useEffect(() => {
@@ -226,9 +235,14 @@ function App() {
           ctx.textBaseline = "middle";
           ctx.strokeStyle = "white";
           ctx.lineWidth = 4;
-          ctx.strokeText(name, service.xName, service.yName);
-          ctx.fillStyle = service.colorName || "#000";
-          ctx.fillText(name, service.xName, service.yName);
+          // دعم الأسطر المتعددة في اسم الفئة
+const lines = String(name).split(/\r?\n/);
+const lineHeight = (service.fontSizeName || 40) * categoryLineSpacing;
+lines.forEach((line, lineIdx) => {
+  ctx.strokeText(line, service.xName, service.yName + lineIdx * lineHeight);
+  ctx.fillStyle = service.colorName || "#000";
+  ctx.fillText(line, service.xName, service.yName + lineIdx * lineHeight);
+});
           // رسم السعر إذا كان موجوداً
           if (usd && !isNaN(Number(usd))) {
             const syp = Math.round(Number(usd) * exchangeRate);
@@ -262,9 +276,14 @@ function App() {
           ctx.textBaseline = "middle";
           ctx.strokeStyle = "white";
           ctx.lineWidth = 4;
-          ctx.strokeText(name, service.xName, service.yName);
-          ctx.fillStyle = service.colorName || "#000";
-          ctx.fillText(name, service.xName, service.yName);
+          // دعم الأسطر المتعددة في اسم الفئة
+const lines = String(name).split(/\r?\n/);
+const lineHeight = (service.fontSizeName || 40) * categoryLineSpacing;
+lines.forEach((line, lineIdx) => {
+  ctx.strokeText(line, service.xName, service.yName + lineIdx * lineHeight);
+  ctx.fillStyle = service.colorName || "#000";
+  ctx.fillText(line, service.xName, service.yName + lineIdx * lineHeight);
+});
           // رسم السعر إذا كان موجوداً
           if (usd && !isNaN(Number(usd))) {
             const syp = Math.round(Number(usd) * exchangeRate);
@@ -461,18 +480,32 @@ function App() {
                 </div>
               )}
               <div className="mb-6 flex flex-col gap-4 items-center justify-center">
-                <label className="font-medium text-lg">
-                  سعر الصرف (دولار → ليرة):
-                </label>
-                <Input
-                  type="number"
-                  min="0"
-                  value={exchangeRate}
-                  onChange={(e) => setExchangeRate(Number(e.target.value))}
-                  className="w-40 text-lg"
-                  placeholder="مثال: 15000"
-                />
-              </div>
+  <label className="font-medium text-lg">
+    سعر الصرف (دولار → ليرة):
+  </label>
+  <Input
+    type="number"
+    min="0"
+    value={exchangeRate}
+    onChange={(e) => setExchangeRate(Number(e.target.value))}
+    className="w-40 text-lg"
+    placeholder="مثال: 15000"
+  />
+  <div className="flex flex-col items-center mt-2">
+    <label className="font-medium text-md mb-1">المسافة بين أسطر الفئة:</label>
+    <input
+      type="number"
+      step="0.05"
+      min="0.7"
+      max="3"
+      value={categoryLineSpacing}
+      onChange={e => setCategoryLineSpacing(Number(e.target.value))}
+      className="w-24 text-md border rounded px-2 py-1 text-center"
+      style={{direction:"ltr"}}
+    />
+    <span className="text-xs text-gray-500">مثال: 1.2 (افتراضي)</span>
+  </div>
+</div>
               <div className="space-y-4 max-h-96 overflow-y-auto p-2">
                 {/* قسم خصائص الفئة */}
                 <div className="flex justify-end mb-2">
@@ -503,16 +536,18 @@ function App() {
                   <Card key={index} className="p-3 mb-2">
                     <div className="flex flex-wrap gap-2 items-center mb-2">
                       {/* اسم الفئة */}
-                      <Input
-                        value={categoryNames[index]}
-                        onChange={(e) => {
-                          const newNames = [...categoryNames];
-                          newNames[index] = e.target.value;
-                          setCategoryNames(newNames);
-                        }}
-                        className="font-medium text-xs w-32"
-                        placeholder="اسم الفئة"
-                      />
+                      <textarea
+  value={categoryNames[index]}
+  onChange={(e) => {
+    const newNames = [...categoryNames];
+    newNames[index] = e.target.value;
+    setCategoryNames(newNames);
+  }}
+  className="font-medium text-xs w-32 border rounded p-1 resize-y min-h-[32px]"
+  placeholder="اسم الفئة"
+  rows={2}
+  style={{ direction: 'rtl', whiteSpace: 'pre-line' }}
+/>
                       <button
                         title="حذف الفئة"
                         className="text-red-600 hover:text-red-800 text-lg px-1"
